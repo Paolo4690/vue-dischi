@@ -1,19 +1,41 @@
 <template>
   <div id="app">
-    <header-dischi />
-    <main-dischi />
+    <header-dischi
+      :arrGenere= arrGenere
+    />
+    <main-dischi-Empty v-if="arrDischi == null" />
+    <main-dischi v-else
+      :arrDischi= arrDischi
+    />
   </div>
 </template>
 
 <script>
 import HeaderDischi from './components/HeaderDischi.vue'
 import MainDischi from './components/MainDischi.vue'
+import MainDischiEmpty from './components/MainDischiEmpty.vue'
+
+import axios from 'axios'
 
 export default {
   name: 'App',
   components: {
     HeaderDischi,
-    MainDischi
+    MainDischi,
+    MainDischiEmpty
+  },
+  data () {
+    return {
+      arrDischiEmpty: '',
+      arrDischi: null,
+      arrGenere: null
+    }
+  },
+  created () {
+    axios.get('https://flynn.boolean.careers/exercises/api/array/music')
+      .then((risposta) => {
+        this.arrDischi = risposta.data.response
+      })
   }
 }
 </script>
