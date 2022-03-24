@@ -3,10 +3,7 @@
     <img src="../assets/img/logo.png" alt="">
     <select class="me-3" name="filter-album" id="filter-album">
       <option value="tutti">Tutti</option>
-      <option value="Rock">Rock</option>
-      <option value="Jazz">Jazz</option>
-      <option value="Pop">Pop</option>
-      <option value="Metal">Metal</option>
+      <option v-for="(genere, index) in arrGenere" :key="index" :value="index">{{ genere }}</option>
     </select>
   </header>
 </template>
