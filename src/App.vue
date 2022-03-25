@@ -41,9 +41,15 @@ export default {
   methods: {
     selectGenere (optSelectGenere) {
       this.genereSelezionato = optSelectGenere
+      if (this.genereSelezionato === 'tutti') {
+        this.genereSelezionato = ''
+      }
     },
     selectAutore (optSelectAutore) {
       this.autoreSelezionato = optSelectAutore
+      if (this.autoreSelezionato === 'tutti') {
+        this.autoreSelezionato = ''
+      }
     }
   },
   created () {

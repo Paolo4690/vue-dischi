@@ -34,15 +34,7 @@ export default {
   },
   computed: {
     filterArray () {
-      if (this.genereSelezionato === 'tutti' && this.autoreSelezionato === 'tutti') {
-        return this.arrDischi
-      } else if (this.genereSelezionato !== 'tutti' && this.autoreSelezionato === 'tutti') {
-        return this.arrDischi.filter(obj => obj.genre.includes(this.genereSelezionato))
-      } else if (this.genereSelezionato === 'tutti' && this.autoreSelezionato !== 'tutti') {
-        return this.arrDischi.filter(obj => obj.author.includes(this.autoreSelezionato))
-      } else {
-        return this.arrDischi.filter(obj => obj.genre.includes(this.genereSelezionato) && obj.author.includes(this.autoreSelezionato))
-      }
+      return this.arrDischi.filter(obj => obj.genre.includes(this.genereSelezionato) && obj.author.includes(this.autoreSelezionato))
     }
   }
 }
