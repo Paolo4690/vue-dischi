@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row row-cols-2 row-cols-md-5 g-3 d-flex flex-wrap">
         <AlbumDischi
-          v-for="album in filterArray()" :key="album.title"
+          v-for="album in filterArray" :key="album.title"
           :autore="album.author"
           :image="album.poster"
           :titolo="album.title"
@@ -26,18 +26,22 @@ export default {
   },
   props: {
     arrDischi: Array,
-    valoreSelezionato: String
+    genereSelezionato: String,
+    autoreSelezionato: String
   },
   components: {
     AlbumDischi
   },
-  methods: {
+  computed: {
     filterArray () {
-      console.log()
-      if (this.valoreSelezionato === 'tutti') {
+      if (this.genereSelezionato === 'tutti' && this.autoreSelezionato === 'tutti') {
         return this.arrDischi
+      } else if (this.genereSelezionato !== 'tutti' && this.autoreSelezionato === 'tutti') {
+        return this.arrDischi.filter(obj => obj.genre.includes(this.genereSelezionato))
+      } else if (this.genereSelezionato === 'tutti' && this.autoreSelezionato !== 'tutti') {
+        return this.arrDischi.filter(obj => obj.author.includes(this.autoreSelezionato))
       } else {
-        return this.arrDischi.filter((obj) => obj.genre.includes(this.valoreSelezionato))
+        return this.arrDischi.filter(obj => obj.genre.includes(this.genereSelezionato) && obj.author.includes(this.autoreSelezionato))
       }
     }
   }

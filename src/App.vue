@@ -1,13 +1,16 @@
 <template>
   <div id="app">
     <header-dischi
-      @passValue="functionSelect"
+      @passValue="selectGenere"
+      @passAutore="selectAutore"
       :arrGenere= arrGenere
+      :arrAutore= arrAutore
     />
     <main-dischi-Empty v-if="arrDischi == null" />
     <main-dischi v-else
       :arrDischi= arrDischi
-      :valoreSelezionato= valoreSelezionato
+      :genereSelezionato= genereSelezionato
+      :autoreSelezionato= autoreSelezionato
     />
   </div>
 </template>
@@ -31,13 +34,17 @@ export default {
       arrDischiEmpty: '',
       arrDischi: null,
       arrGenere: [],
-      valoreSelezionato: 'tutti'
+      arrAutore: [],
+      genereSelezionato: '',
+      autoreSelezionato: ''
     }
   },
   methods: {
-    functionSelect (optSelect) {
-      this.valoreSelezionato = optSelect
-      console.log('app', this.valoreSelezionato)
+    selectGenere (optSelectGenere) {
+      this.genereSelezionato = optSelectGenere
+    },
+    selectAutore (optSelectAutore) {
+      this.autoreSelezionato = optSelectAutore
     }
   },
   created () {
@@ -47,6 +54,9 @@ export default {
         for (let i = 0; i < this.arrDischi.length; i++) {
           if (!this.arrGenere.includes(this.arrDischi[i].genre)) {
             this.arrGenere.push(this.arrDischi[i].genre)
+          }
+          if (!this.arrAutore.includes(this.arrDischi[i].author)) {
+            this.arrAutore.push(this.arrDischi[i].author)
           }
         }
       })
