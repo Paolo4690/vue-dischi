@@ -31,7 +31,6 @@ export default {
   },
   data () {
     return {
-      arrDischiEmpty: '',
       arrDischi: null,
       arrGenere: [],
       arrAutore: [],
