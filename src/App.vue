@@ -1,11 +1,13 @@
 <template>
   <div id="app">
     <header-dischi
+      @passValue="functionSelect"
       :arrGenere= arrGenere
     />
     <main-dischi-Empty v-if="arrDischi == null" />
     <main-dischi v-else
       :arrDischi= arrDischi
+      :valoreSelezionato= valoreSelezionato
     />
   </div>
 </template>
@@ -28,7 +30,14 @@ export default {
     return {
       arrDischiEmpty: '',
       arrDischi: null,
-      arrGenere: []
+      arrGenere: [],
+      valoreSelezionato: 'tutti'
+    }
+  },
+  methods: {
+    functionSelect (optSelect) {
+      this.valoreSelezionato = optSelect
+      console.log('app', this.valoreSelezionato)
     }
   },
   created () {
@@ -49,6 +58,5 @@ export default {
 $primary: #2e3a46;
 $secondary: #1e2d3b;
 @import '~bootstrap/scss/bootstrap';
-@import './assets/styles/style';
 
 </style>

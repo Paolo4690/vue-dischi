@@ -1,10 +1,12 @@
 <template>
-  <div class="block bg-primary p-3 mb-3">
-    <img :src="image" class="w-100" :alt="titolo">
-    <div class="cont-txt text-center">
-      <h1 class="fs-4">{{ autore }}</h1>
-      <span class="d-block">{{ titolo }}</span>
-      <span>{{ year }}</span>
+  <div class="col">
+    <div class="p-3 bg-primary h-100">
+      <img :src="image" class="w-100" :alt="titolo">
+      <div class="cont-txt text-center">
+        <h1 class="text-white fs-4">{{ autore }}</h1>
+        <span class="d-block">{{ titolo }}</span>
+        <span>{{ year }}</span>
+        </div>
       </div>
   </div>
 </template>
@@ -22,7 +24,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.block {
-  width: calc(100% / 5 - .8rem);
+span {
+    color: #8d8d8d;
 }
 </style>
