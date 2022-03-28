@@ -19,11 +19,6 @@ import AlbumDischi from './AlbumDischi.vue'
 
 export default {
   name: 'MainDischi',
-  data () {
-    return {
-      arrFilteredGenere: []
-    }
-  },
   props: {
     arrDischi: Array,
     genereSelezionato: String,

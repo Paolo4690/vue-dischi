@@ -54,16 +54,10 @@ export default {
   },
   created () {
     axios.get('https://flynn.boolean.careers/exercises/api/array/music')
-      .then((risposta) => {
-        this.arrDischi = risposta.data.response
-        for (let i = 0; i < this.arrDischi.length; i++) {
-          if (!this.arrGenere.includes(this.arrDischi[i].genre)) {
-            this.arrGenere.push(this.arrDischi[i].genre)
-          }
-          if (!this.arrAutore.includes(this.arrDischi[i].author)) {
-            this.arrAutore.push(this.arrDischi[i].author)
-          }
-        }
+      .then((response) => {
+        this.arrDischi = response.data.response
+        this.arrGenere = [...new Set(this.arrDischi.map(elemento => elemento.genre))]
+        this.arrAutore = [...new Set(this.arrDischi.map(elemento => elemento.author))]
       })
   }
 }
